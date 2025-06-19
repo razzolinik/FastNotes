@@ -1,0 +1,419 @@
+/* ========== ESTILO BASE ========== */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #fcd6df;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* ========== MENÚ SUPERIOR ========== */
+.navbar {
+    background: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.navbar-buttons h\:commandLink {
+    padding: 8px 16px;
+    background-color: #ffb6c1;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-buttons h\:commandLink:hover {
+    background-color: #ff91a4;
+    color: white;
+}
+
+/* ========== ENCABEZADO Y INFO ========== */
+.notes-header h1 {
+    text-align: center;
+    font-size: 48px;
+    margin-top: 80px;
+    color: #333;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.notes-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    font-size: 16px;
+    margin: 30px auto;
+    max-width: 900px;
+}
+
+/* ========== NOTAS ========== */
+.note-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px 80px;
+}
+
+.note-card {
+    width: 240px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    background-color: #fff5b1;
+    transition: transform 0.2s ease;
+}
+
+.note-content p {
+    margin-bottom: 8px;
+}
+.note-card:hover {
+    transform: translateY(-5px);
+}
+
+.note-content strong {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.note-snippet {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+}
+
+.note-preview-modal {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-preview-content {
+    background: #fff;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ========== BOTONES DE CADA NOTA ========== */
+.note-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: #ffe7a7;
+}
+
+.delete-btn:hover {
+    background-color: #ffd1d1;
+}
+
+/* ========== BOTÓN FLOTANTE DE CREACIÓN ========== */
+.add-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+/* ========== PÁGINA DE CREACIÓN / EDICIÓN DE NOTAS ========== */
+.note-edit-body {
+    padding: 120px 20px 40px;
+}
+
+.note-edit-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 4px 4px 14px rgba(0,0,0,0.2);
+}
+
+/* Botones de estilo de texto */
+.editor-toolbar {
+    margin-bottom: 20px;
+}
+.editor-toolbar button {
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    background-color: #ff9fb2;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.editor-toolbar button:hover {
+    background-color: #ff6f91;
+    color: white;
+}
+
+/* Título y contenido */
+.note-title {
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.note-content {
+    width: 100%;
+    height: 200px;
+    font-size: 16px;
+}
+
+/* LOGIN PAGE */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fcd6df;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.login-box h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.login-box label {
+    display: block;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.login-box input {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.login-box button,
+.login-box input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff9fb2;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-box button:hover,
+.login-box input[type="submit"]:hover {
+    background-color: #ff6f91;
+    color: white;
+}
+
+/* NAVBAR - estilo limpio y centrado */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+/* Título con ícono */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-left img {
+    width: 28px;
+    height: 28px;
+}
+
+.navbar-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Botones a la derecha */
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar-buttons h\:commandLink,
+.navbar-buttons a {
+    padding: 6px 14px;
+    background-color: #ffb6c1;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-buttons h\:commandLink:hover,
+.navbar-buttons a:hover {
+    background-color: #ff8ba7;
+    color: white;
+}
+
+/* Botones del menú superior (Home / Logout) */
+.navbar-btn {
+    background-color: #ffb6c1;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: inherit;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+.navbar-btn:hover {
+    background-color: #ff8ba7;
+    color: white;
+}
+
+.note-info-box:hover {
+    background-color: #ff8ba7;
+    color: white;
+}
+.note-info-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    font-size: 16px;
+    text-align: left;
+}
+
+.note-info-box p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.note-info-box strong {
+    color: #000;
+    margin-right: 5px;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.filter-form {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.filter-btn, .archive-btn {
+    padding: 6px 12px;
+    background-color: #d2bfff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 5px 5px;
+}
+
+.filter-btn:hover, .archive-btn:hover {
+    background-color: #c2a0ff;
+    color: white;
+}
+
+.note-content p {
+    white-space: pre-line;
+}

@@ -1,0 +1,5 @@
+com\mycompany\fastnotes\NoteBean.class
+com\mycompany\fastnotes\resources\JakartaEE10Resource.class
+com\mycompany\fastnotes\Note.class
+com\mycompany\fastnotes\LoginBean.class
+com\mycompany\fastnotes\JakartaRestConfiguration.class

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>My Notes</title>
+        <h:outputStylesheet name="css/styles.css" />
+    </h:head>
+
+    <h:body class="notes-body">
+
+        <!-- Menú -->
+        <ui:include src="/components/menu.xhtml"/>
+
+        <div class="notes-header">
+            <h1>My Notes</h1>
+            <div class="note-info-box">
+                <p><strong>USER:</strong> kikiwi</p>
+                <p><strong>DATE:</strong> #{noteBean.today}</p>
+                <p><strong>SEARCH:</strong>
+                    <h:form>
+                        <h:inputText value="#{noteBean.search}" />
+                        <h:commandButton value="🔍" action="#{noteBean.getNotes}" />
+                    </h:form>
+                </p>
+                <p><strong>AMOUNT OF NOTES:</strong> #{noteBean.notes.size()}</p>
+            </div>
+
+            <!-- Botón para alternar vista -->
+            <h:form styleClass="filter-form">
+                <h:commandButton value="#{noteBean.showArchived ? '🔙 View Active Notes' : '📦 View Archived Notes'}"
+                                 action="#{noteBean.toggleArchivedView}"
+                                 styleClass="filter-btn"/>
+            </h:form>
+        </div>
+
+        <!-- Notas -->
+        <div class="note-container">
+            <ui:repeat value="#{noteBean.notes}" var="note">
+                <div class="note-card" 
+                     onclick="showPreview(this.querySelector('.note-title').innerText, this.querySelector('.note-hidden-content').innerHTML)">
+
+                    <div class="note-content">
+                        <strong class="note-title">#{note.title}</strong>
+                        <div class="note-snippet note-hidden-content">
+                            <h:outputText value="#{note.content}" escape="false" />
+                        </div>
+                    </div>
+
+                    <h:form styleClass="note-actions">
+                        <h:commandButton value="✏️ Edit" action="#{noteBean.edit(note)}" styleClass="edit-btn"/>
+                        <h:commandButton value="🗑️ Delete" action="#{noteBean.delete(note)}"
+                                         onclick="return confirm('Delete this note?')"
+                                         styleClass="delete-btn"/>
+                        <h:commandButton value="#{note.archived ? 'Unarchive' : 'Archive'}"
+                                         action="#{noteBean.toggleArchive(note)}"
+                                         styleClass="archive-btn"/>
+                    </h:form>
+                </div>
+            </ui:repeat>
+        </div>
+
+        <!-- Botón para nueva nota -->
+        <h:form>
+            <h:commandButton value="+" action="newNotePage.xhtml?faces-redirect=true" styleClass="add-btn"/>
+        </h:form>
+
+        <!-- Modal -->
+        <div id="previewModal" class="note-preview-modal" style="display:none;">
+            <div class="note-preview-content">
+                <span class="close-btn" onclick="closePreview()">×</span>
+                <h2 id="previewTitle"></h2>
+                <div id="previewText"></div>
+            </div>
+        </div>
+
+        <!-- JavaScript para previsualizar -->
+        <script>
+            function showPreview(title, content) {
+                document.getElementById("previewTitle").innerText = title;
+                document.getElementById("previewText").innerHTML = content; // importante: innerHTML para texto enriquecido
+                document.getElementById("previewModal").style.display = "flex";
+            }
+
+            function closePreview() {
+                document.getElementById("previewModal").style.display = "none";
+            }
+        </script>
+
+
+    </h:body>
+</html>
